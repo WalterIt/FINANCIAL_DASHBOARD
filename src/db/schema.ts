@@ -9,7 +9,7 @@ import { z } from "zod";
 export const roleEnum = pgEnum('role', ['ADMIN', 'USER']);
 
 export const users = pgTable('users', {
-  id: varchar('id', { length: 955 }).primaryKey(),
+  id: varchar('id', { length: 455 }).primaryKey(),
   name: text('name'),
   email: text('email').unique(),
   password: text('password'),
@@ -42,6 +42,15 @@ export const accounts = pgTable('accounts', {
 }));
 
 export const insertAccountSchema = createInsertSchema(accounts);
+
+// Create the realionship between accounts and users
+export const accountRelations = relations(accounts, ({ one }) => ({
+  user: one(users, {
+    fields: [accounts.userId],
+    references: [users.id],
+  }),
+}));
+
 
 
 export const verificationTokens = pgTable('verification_tokens', {
@@ -84,7 +93,7 @@ export const twoFactorToken  = pgTable('two_factor_token', {
     plaidId: text("plaid_id"),
   });
   
-  export const accountsRelations = relations(financialAccounts, ({ many }) => ({
+  export const financialAccountsRelations = relations(financialAccounts, ({ many }) => ({
     transactions: many(transactions),
   }));
   

@@ -1,19 +1,10 @@
-import { config } from "dotenv";
-import { drizzle } from "drizzle-orm/node-postgres";
-import { Pool } from "pg";
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+import * as schema from '@/db/schema';
 
+// config({ path: ".env" });
 
-// const schema = {schema: "./db/schema.ts",}
-
-config({ path: ".env" });
-
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL!,
-});
-
-const db = drizzle(pool)
+const client = postgres(process.env.VERCEL_DATABASE_URL!, {prepare: false});
+const db = drizzle(client, { schema });
 
 export default db;
-
-
-  
