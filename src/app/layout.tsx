@@ -6,6 +6,7 @@ import "@/css/style.css";
 import React, { useEffect, useState } from "react";
 import Loader from "@/components/common/Loader";
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,8 +20,10 @@ export default function RootLayout({
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
+
   return (
     <html lang="en">
+      
       <body suppressHydrationWarning={true}>
         <div className="dark:bg-boxdark-2 dark:text-bodydark h-full">
           {loading ? <Loader /> : children}
