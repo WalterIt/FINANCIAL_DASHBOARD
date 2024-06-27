@@ -23,7 +23,7 @@ export const Social = () => {
                 <FcGoogle className="w-6 h-6" />
             </Button>
             <Button className="w-full" size={"lg"} variant={"outline"} onClick={() => onClick("github")}>
-                <FaGithub className="w-6 h-6" />
+                <FaGithub className="w-6 h-6 text-black" />
             </Button>
         </div>
     )

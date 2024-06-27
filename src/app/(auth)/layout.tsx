@@ -1,7 +1,7 @@
 
 const LayoutPage = ({children} : {children : React.ReactNode}) => {
   return (
-    <div className='flex h-full justify-center items-center bg-gradient-to-b from-sky-400 to-sky-800'>
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
         {children}
     </div>
   )
