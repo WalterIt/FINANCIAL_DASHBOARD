@@ -3,6 +3,7 @@ import { boolean, uniqueIndex } from 'drizzle-orm/pg-core';
 import { createInsertSchema } from "drizzle-zod";
 import { relations } from "drizzle-orm";
 import { z } from "zod";
+// import db from './drizzle';
 
 
 
@@ -150,14 +151,14 @@ export const twoFactorToken  = pgTable('two_factor_token', {
 
 
 
-// export type User = typeof users.$inferSelect; // return type when queried
-// export type NewUser = typeof users.$inferInsert; // insert type
+export type User = typeof users.$inferSelect; // return type when queried
+export type NewUser = typeof users.$inferInsert; // insert type
 
+// export async function insertUser(user: NewUser): Promise<User[]> {
+//   return db.insert(users).values(user).returning();
+// }
 
 // const db = drizzle(...);
 
 // const result: User[] = await db.select().from(users);
 
-// export async function insertUser(user: NewUser): Promise<User[]> {
-//   return db.insert(users).values(user).returning();
-// }

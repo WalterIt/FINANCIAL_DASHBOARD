@@ -4,13 +4,27 @@ import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import { NewUser } from "@/db/schema";
+// import { insertUser } from "@/features/auth/sign-up/api/use-create-user";
 
 export const metadata: Metadata = {
   title: "Next.js SignIn Page | TailAdmin - Next.js Dashboard Template",
   description: "This is Next.js Signin Page TailAdmin Dashboard Template",
 };
 
-const SignIn: React.FC = () => {
+const SignIn: React.FC = async () => {
+//   const user: NewUser = {
+//     id: "1533fttee",
+//     name: "Devid Heilo",
+//     email: "devid.heilo@me.com",
+//     password: "123456",
+//     role: "ADMIN",
+//   }
+
+//   const newUser = await insertUser(user)
+//   console.log(newUser)
+
+
   return (
     <DefaultLayout>
       <Breadcrumb pageName="Sign In" />
