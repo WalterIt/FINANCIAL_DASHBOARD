@@ -6,6 +6,18 @@
 - You **absolutely need** fine-grained control over user management logic that isn't provided by existing adapters.
 - You're already using Drizzle ORM in your project and want a tightly integrated solution.
 
+**Use the suggestions above (recommended) if:**
+
+- You prioritize **simplicity and ease of use**.
+- Your project uses a **supported database** with an existing adapter for Auth.js (check the documentation).
+- You're **unsure about the complexity** of managing a custom adapter.
+
+**Consider these additional factors:**
+
+- **Development and maintenance effort:** Creating and maintaining a custom adapter requires more work compared to using an existing one.
+- **Potential bugs and edge cases:** Custom code might introduce bugs you'll need to troubleshoot.
+- **Community support:** Existing adapters might have better community support for troubleshooting.
+
 **Here's a revised recommendation:**
 
 1. **Prioritize existing adapters:** If a supported adapter exists for your database in Auth.js, use that first. It will likely be easier to set up and maintain.
@@ -46,9 +58,6 @@ import type {
 import { createInsertSchema } from "drizzle-zod";
 import { relations } from "drizzle-orm";
 import { z } from "zod";
-import { createId } from '@paralleldrive/cuid2';
-
-
 
 export const roleEnum = pgEnum('role', ['ADMIN', 'USER']);
 
@@ -603,10 +612,10 @@ export type DefaultPostgresSchema = {
 
 
 
-// FINANCIAL ACCOUNTS TABLES  
+
 
 export const financialAccounts = pgTable("financial_accounts", {
-  id: text("id").primaryKey().default(createId()),
+  id: text("id").primaryKey(),
   name: text("name").notNull(),
   userId: text("user_id").notNull(),
   plaidId: text("plaid_id"),
@@ -619,7 +628,7 @@ export const financialAccountsRelations = relations(financialAccounts, ({ many }
 export const insertFinancialAccountSchema = createInsertSchema(financialAccounts);
 
 export const categories = pgTable("categories", {
-  id: text("id").primaryKey().default(createId()),
+  id: text("id").primaryKey(),
   name: text("name").notNull(),
   userId: text("user_id").notNull(),
   plaidId: text("plaid_id"),
@@ -632,7 +641,7 @@ export const categoriesRelations = relations(categories, ({ many }) => ({
 export const insertCategorySchema = createInsertSchema(categories);
 
 export const transactions = pgTable("transactions", {
-  id: text("id").primaryKey().default(createId()),
+  id: text("id").primaryKey(),
   amount: integer("amount").notNull(),
   payee: text("payee").notNull(),
   notes: text("notes"),

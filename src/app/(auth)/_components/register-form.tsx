@@ -12,8 +12,8 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { useState, useTransition } from "react";
 
-import { createId } from "@paralleldrive/cuid2";
-import { insertUser } from "@/features/auth/sign-up/api/insertUser";
+// import { createId } from "@paralleldrive/cuid2";
+// import { insertUser } from "@/features/auth/sign-up/api/insertUser";
 import { useRouter } from "next/navigation";
 
 const NewUserSchema = z.object({
@@ -45,28 +45,28 @@ export const RegisterForm = () => {
       setSuccess("");
 
       startTransition(async () => {
-        values.id = createId();
+        // values.id = createId();
 
-        try {
-          values.id = createId();
+        // try {
+        //   values.id = createId();
 
-          const createdUser = await insertUser(values);
+        //   const createdUser = await insertUser(values);
 
-          if (createdUser) {
-            setSuccess("User created successfully!");
-            router.push("/login");
-          } else {
-            setError("User Creation Failed!");
-            throw new Error("User creation failed");
-          }
-        } catch (err) {
-          if (err instanceof Error && err.message === "Email is already used") {
-            setError("Email is Already Used!");
-          } else {
-            setError("An error occurred during registration.");
-          }
-          console.error("Registration Error:", err);
-        }
+        //   if (createdUser) {
+        //     setSuccess("User created successfully!");
+        //     router.push("/login");
+        //   } else {
+        //     setError("User Creation Failed!");
+        //     throw new Error("User creation failed");
+        //   }
+        // } catch (err) {
+        //   if (err instanceof Error && err.message === "Email is already used") {
+        //     setError("Email is Already Used!");
+        //   } else {
+        //     setError("An error occurred during registration.");
+        //   }
+        //   console.error("Registration Error:", err);
+        // }
       });
 
     };

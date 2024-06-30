@@ -12,17 +12,7 @@ export const metadata: Metadata = {
   description: "This is Next.js Signin Page TailAdmin Dashboard Template",
 };
 
-const SignIn: React.FC = async () => {
-//   const user: NewUser = {
-//     id: "1533fttee",
-//     name: "Devid Heilo",
-//     email: "devid.heilo@me.com",
-//     password: "123456",
-//     role: "ADMIN",
-//   }
-
-//   const newUser = await insertUser(user)
-//   console.log(newUser)
+const SignIn: React.FC =  () => {
 
 
   return (

@@ -12,11 +12,14 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 // import { login } from "@/actions/login";
 import { useState, useTransition } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-
+import useLogin from "@/features/auth/sign-in/use-login";
+// import { UserLogin } from "@/utils/auth-user";
+// import { User } from "@/db/schema";
 
 export const LoginForm = () => {
+    const router = useRouter();
     const searchParams = useSearchParams()
     // const callbackUrl = searchParams.get("callbackUrl")
     const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "Email is already in use with a different Provider!!" : "";
@@ -24,6 +27,7 @@ export const LoginForm = () => {
     const [error,setError] = useState<string | undefined>("")
     const [success,setSuccess] = useState<string | undefined>("")
     const [isPending, startTransition] = useTransition()
+    const mutation = useLogin()
 
     const form = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
@@ -37,25 +41,18 @@ export const LoginForm = () => {
         setError("")
         setSuccess("")
 
-        // startTransition(() => {
-        //     login(values)
-        //         .then((data) => {
-        //             if (data?.error) {
-        //                 form.reset()
-        //                 setError(data.error)
-        //             }
-
-        //             // if (data?.success) {
-        //             //     form.reset()
-        //             //     setSuccess(data?.success)
-        //             // }
-
-        //             // if (data?.twoFactor) {
-        //             //     setTwoFactor(true)
-        //             // }
-        //         })
-        //         .catch(() => setError("Something Went Wrong"))
-        // }) 
+        startTransition(() => {
+        
+          //   mutation.mutate(values as User, {
+          //     onSuccess: () => {
+          //       setSuccess("Login Successful!") 
+          //       router.push("/dashboard")  
+          //     },
+          //     onError: (error) => {
+          //       setError(error.message)
+          //     }
+          // })
+      })
     }
 
     return (
@@ -66,7 +63,10 @@ export const LoginForm = () => {
         showSocial
       >
             <Form {...form}>
-                <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+                <form className="space-y-6" 
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  
+                >
                     <div className="space-y-4">
                         {/* {isTwoFactor && (
                              <FormField

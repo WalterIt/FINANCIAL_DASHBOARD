@@ -1,8 +1,8 @@
 // 'use server';
 
 // // src/lib/insertUser.ts
-// import db from "@/db/drizzle";
-// import { NewUser, User, users } from "@/db/schema";
+// import {db} from "@/db/drizzle";
+// import { NewUser, User, user } from "@/db/schema";
 // import bcrypt from "bcryptjs"
 
 // export async function insertUser(user: NewUser): Promise<User[]> {
@@ -14,7 +14,7 @@
 //   }
   
 //   try {    
-//     return await db.insert(users).values({...user, password: hashedPassword}).returning();
+//     return await db.insert(user).values({...user, password: hashedPassword}).returning();
 //   } catch (error) {
 //     if ((error as { message: string }).message.includes("users_email_unique")) {
 //       throw new Error("Email is already used");

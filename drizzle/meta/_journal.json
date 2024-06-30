@@ -15,6 +15,27 @@
       "when": 1719372203310,
       "tag": "0001_deep_leo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1719716461509,
+      "tag": "0002_handy_risque",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1719716493197,
+      "tag": "0003_heavy_stone_men",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1719733316512,
+      "tag": "0004_stale_mandarin",
+      "breakpoints": true
     }
   ]
 }

@@ -1,5 +1,10 @@
+'use client'
 import Image from "next/image";
-import { LoginForm } from '../_components/login-form'
+// import { LoginForm } from '../_components/login-form'
+import dynamic from 'next/dynamic';
+const DynamicLoginForm = dynamic(() => import('../_components/login-form').then((mod) => mod.LoginForm), {
+  ssr: false,
+});
 
 
 const LoginPage = () => { 
@@ -14,7 +19,7 @@ const LoginPage = () => {
         </div>
         <div className="flex items-center justify-center mt-4">
 
-          <LoginForm />
+          <DynamicLoginForm />
         </div>
       </div>
 

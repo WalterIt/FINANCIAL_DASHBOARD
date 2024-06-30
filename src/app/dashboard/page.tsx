@@ -17,8 +17,8 @@ import { useSession } from "@hono/auth-js/react"
 
 
 
-const DashboardPage= () => {
-  const { data: session, update } = useSession() || {};
+const DashboardPage =  () => {
+  // const { data: session, update } = useSession() || {};
 
   // useEffect(() => {
   //   if (typeof window === 'undefined') return;

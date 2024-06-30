@@ -13,6 +13,7 @@
     "db:seed": "tsx ./scripts/seed.ts"
   },
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.4.1",
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -43,7 +44,7 @@
     "jsvectormap": "^1.5.3",
     "lucide-react": "^0.395.0",
     "next": "^14.2.4",
-    "next-auth": "^4.24.7",
+    "next-auth": "^5.0.0-beta.19",
     "postgres": "^3.4.4",
     "query-string": "^9.0.0",
     "react": "^18",

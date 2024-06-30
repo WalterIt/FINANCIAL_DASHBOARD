@@ -1,6 +1,10 @@
-
+'use client'
 import Image from "next/image";
-import { RegisterForm } from '../_components/register-form'
+// import { RegisterForm } from '../_components/register-form'
+import dynamic from 'next/dynamic';
+const DynamicRegisterForm = dynamic(() => import('../_components/register-form').then((mod) => mod.RegisterForm), {
+  ssr: false,
+});
 
 
 const SignUpPage = () => {
@@ -15,7 +19,7 @@ const SignUpPage = () => {
       </div>
       <div className="flex items-center justify-center mt-4">
 
-      <RegisterForm />
+      <DynamicRegisterForm />
       </div>
     </div>
 
